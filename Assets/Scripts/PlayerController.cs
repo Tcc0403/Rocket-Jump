@@ -8,7 +8,8 @@ public class PlayerController : MonoBehaviour
 {
     public Transform rocketPrefab;
     public float xRotation;
-
+    private Vector3 PlayerMovementInput;
+    private Vector2 PlayerMouseInput;
     private Rigidbody playerRigidbody;
     [SerializeField] private bool falling;
     [SerializeField] private float jumpForce;
@@ -17,6 +18,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private bool launch;
     [SerializeField] private float launchCD;
 
+    
     private void Start()
     {
         Cursor.visible = false;
@@ -44,29 +46,13 @@ public class PlayerController : MonoBehaviour
             launch = false;
         }
 
-        if (Input.GetKey(KeyCode.W) && !Input.GetKey(KeyCode.S))
-        {
-            run = true;
-            transform.position += runSpeed * transform.forward * Time.deltaTime;
-        }// press 'W' key to move forward
-        if (!Input.GetKey(KeyCode.W) && Input.GetKey(KeyCode.S))
-        {
-            run = true;
-            transform.position -= runSpeed * transform.forward * Time.deltaTime;
-        }// press 'S' key to move backward
-        //*** move forward or backward ***//
-
-        if (Input.GetKey(KeyCode.A) && !Input.GetKey(KeyCode.D))
-        {
-            run = true;
-            transform.position -= runSpeed * transform.right * Time.deltaTime;
-        }// press 'A' key to move left
-        if (!Input.GetKey(KeyCode.A) && Input.GetKey(KeyCode.D))
-        {
-            run = true;
-            transform.position += runSpeed * transform.right * Time.deltaTime;
-        }// press 'D' key to move right
-        //*** move left or right ***//
+        PlayerMovementInput = new Vector3(Input.GetAxis("Horizontal"), 0f, Input.GetAxis("Vertical"));        
+        Vector3 MoveVector = transform.TransformDirection(PlayerMovementInput) * runSpeed;
+        playerRigidbody.velocity = new Vector3(MoveVector.x, playerRigidbody.velocity.y, MoveVector.z);
+        
+        if(playerRigidbody.velocity.magnitude!=0) run = true;
+        
+        
 
         if (!falling && Input.GetKey(KeyCode.Space))
         {
