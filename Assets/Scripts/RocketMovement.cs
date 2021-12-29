@@ -54,11 +54,11 @@ public class RocketMovement : MonoBehaviour
     private void BlowUpPlayer()
     {
         Rigidbody playerRigidbody = playerTransform.GetComponent<Rigidbody>();
-        playerRigidbody.AddForce((explosionRange - (playerTransform.position - transform.position).magnitude) * 200 * (playerTransform.position - transform.position));
+        playerRigidbody.AddForce((explosionRange - (playerTransform.position - transform.position).magnitude) * 100 * (playerTransform.position - transform.position));
     }
 
     private bool outOfMap()
     {
-        return transform.position.x < -200 || transform.position.x > 200 || transform.position.y < -200 || transform.position.y > 200 || transform.position.z < -200 || transform.position.z > 200;
+        return transform.position.x < -2000 || transform.position.x > 2000 || transform.position.y < -2000 || transform.position.y > 2000 || transform.position.z < -2000 || transform.position.z > 2000;
     }
 }
