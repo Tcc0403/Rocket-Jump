@@ -4727,7 +4727,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-1206
+  m_Name: pb_Mesh-1222
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -9373,7 +9373,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 391790bbf05d64b478328223d8cc0e51, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rocketPrefab: {fileID: 5812476243364511196, guid: 664f61fac64041f4480bd6106ad2b9b2, type: 3}
+  rocketPrefab:
+  - {fileID: 5812476243364511196, guid: 664f61fac64041f4480bd6106ad2b9b2, type: 3}
+  - {fileID: 5812476243364511196, guid: ccad1920b14fbe94393265ba94c09b6f, type: 3}
+  - {fileID: 5812476243364511196, guid: 8fb218e31eec1204a9987bffe8a2b09f, type: 3}
   xRotation: 0
   falling: 0
   jumpForce: 350
@@ -9381,6 +9384,7 @@ MonoBehaviour:
   runSpeed: 5
   launch: 0
   launchCD: 0
+  currentRocketType: 0
 --- !u!23 &1956031554
 MeshRenderer:
   m_ObjectHideFlags: 0

@@ -6,10 +6,10 @@ using UnityEngine;
 [RequireComponent(typeof(Collider))]
 public class RocketMovement : MonoBehaviour
 {
-    public Transform playerTransform;
-
-    private const float moveSpeed = 15.0f;
-    private const float explosionRange = 4.0f;
+    public Transform playerTransform;  
+    public int explosionForce = 200;
+    public float moveSpeed = 15.0f;
+    public float explosionRange = 4.0f;
     private void Start()
     {
         transform.forward = playerTransform.forward;
@@ -54,7 +54,7 @@ public class RocketMovement : MonoBehaviour
     private void BlowUpPlayer()
     {
         Rigidbody playerRigidbody = playerTransform.GetComponent<Rigidbody>();
-        playerRigidbody.AddForce((explosionRange - (playerTransform.position - transform.position).magnitude) * 200 * (playerTransform.position - transform.position));
+        playerRigidbody.AddForce((explosionRange - (playerTransform.position - transform.position).magnitude) * explosionForce * (playerTransform.position - transform.position));
     }
 
     private bool outOfMap()
