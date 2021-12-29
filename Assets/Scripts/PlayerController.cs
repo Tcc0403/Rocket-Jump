@@ -77,6 +77,19 @@ public class PlayerController : MonoBehaviour
             falling = false;
         }
         // finish jump
+        /*
+        if (collision.gameObject.name.Contains("Again"))
+        {
+            transform.position = new Vector3(10, -44, -90);
+            transform.forward = Vector3.forward;
+            xRotation = 0.0f;
+        }*/
+
+        if (collision.gameObject.name.Contains("Finish"))
+        {
+            Debug.Log("Win");
+        }
+
 
         Debug.Log("PlayerOnCollisionEnter : " + collision.gameObject.name);
     }
