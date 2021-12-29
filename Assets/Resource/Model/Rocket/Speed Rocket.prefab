@@ -126,6 +126,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerTransform: {fileID: 0}
-  explosionForce: 150
+  explosionForce: 100
   moveSpeed: 25
   explosionRange: 3

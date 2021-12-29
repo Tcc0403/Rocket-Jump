@@ -37,7 +37,7 @@ public class RocketMovement : MonoBehaviour
 
     private void OnTriggerEnter(Collider collider)
     {
-        if (collider.gameObject.name.Contains("Cube"))
+        if (collider.gameObject.CompareTag("Ground"))
         {// collide with background
             if(explosionNearPlayer())
                 BlowUpPlayer();
