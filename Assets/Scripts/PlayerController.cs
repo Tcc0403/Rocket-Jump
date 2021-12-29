@@ -2,11 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+enum rocketType{
+    Basic = 0,
+    Speed,
+    Power
+}
+
 [RequireComponent(typeof(Rigidbody))]
 [RequireComponent(typeof(Collider))]
 public class PlayerController : MonoBehaviour
 {
-    public Transform rocketPrefab;
+    public Transform[] rocketPrefab;
     public float xRotation;
     private Vector3 PlayerMovementInput;
     private Vector2 PlayerMouseInput;
@@ -17,6 +23,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float runSpeed;
     [SerializeField] private bool launch;
     [SerializeField] private float launchCD;
+    [SerializeField] private rocketType currentRocketType = rocketType.Basic;
 
     
     private void Start()
@@ -96,7 +103,7 @@ public class PlayerController : MonoBehaviour
 
     private void launchRocket()
     {
-        Transform rocketTransform = Instantiate(rocketPrefab);
+        Transform rocketTransform = Instantiate(rocketPrefab[(int)currentRocketType]);
         RocketMovement rocketMovement = rocketTransform.GetComponent<RocketMovement>();
         rocketMovement.playerTransform = this.transform;
     }

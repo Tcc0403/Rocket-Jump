@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 5812476243364511200}
   - component: {fileID: 372223408463104037}
   m_Layer: 0
-  m_Name: Rocket
+  m_Name: Speed Rocket
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -126,4 +126,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerTransform: {fileID: 0}
-  rocketSpeed: 10
+  explosionForce: 150
+  moveSpeed: 25
+  explosionRange: 3
