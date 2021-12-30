@@ -2,13 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AutoSaver : MonoBehaviour
+public class FinishTrigger : MonoBehaviour
 {
+    
     private void OnTriggerEnter(Collider other) {
         if(other.CompareTag("Player"))
         {
-            other.GetComponent<Player>().Save();
-                        
+            Debug.Log("Goal");
         }
     }
 }
