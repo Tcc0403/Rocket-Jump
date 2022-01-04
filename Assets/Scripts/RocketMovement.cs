@@ -55,7 +55,7 @@ public class RocketMovement : MonoBehaviour
     private void BlowUpPlayer()
     {
         Rigidbody playerRigidbody = playerTransform.GetComponent<Rigidbody>();
-        playerRigidbody.AddForce((explosionRange - (playerTransform.position - transform.position).magnitude) * 200 * (playerTransform.position - transform.position));
+        playerRigidbody.AddForce((explosionRange - (playerTransform.position - transform.position).magnitude) * 100 * (playerTransform.position - transform.position));
     }
 
     private bool outOfMap()
