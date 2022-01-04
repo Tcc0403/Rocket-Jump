@@ -42,7 +42,7 @@ public class PlayerController : MonoBehaviour
         falling = false;
         jumpForce = 200.0f;
         run = false;
-        runSpeed = 30f;
+        runSpeed = 7.5f;
         launch = false;
         launchCD = 0.0f;
     }
