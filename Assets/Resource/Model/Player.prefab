@@ -13,9 +13,12 @@ GameObject:
   - component: {fileID: 7677052232323285419}
   - component: {fileID: 7677052232323285418}
   - component: {fileID: 7677052232323285417}
+  - component: {fileID: 220929262}
+  - component: {fileID: 5541084585581311596}
+  - component: {fileID: 2021610110}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -27,8 +30,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7677052232323285463}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 10, y: -33.1, z: -90}
+  m_LocalRotation: {x: 0, y: 0.5084579, z: -0, w: -0.8610869}
+  m_LocalPosition: {x: 70.995415, y: -29.000002, z: -88.0921}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 7677052232548618734}
@@ -59,7 +62,7 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7677052232323285463}
-  m_Material: {fileID: 13400000, guid: 48d8a01ca55e50f4fabfca3a2241222c, type: 2}
+  m_Material: {fileID: 13400000, guid: 9a80a058d8e449d46ae1f6c1b0e67562, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
@@ -118,14 +121,58 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 391790bbf05d64b478328223d8cc0e51, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rocketPrefab: {fileID: 5812476243364511196, guid: 664f61fac64041f4480bd6106ad2b9b2, type: 3}
-  xRotation: 0
+  xRotation: -49.85457
   falling: 0
-  jumpForce: 350
-  run: 0
-  runSpeed: 5
+  jumpForce: 200
+  run: 1
+  runSpeed: 7.5
+  slopeLimit: 60
+  isOnSlope: 0
+--- !u!114 &220929262
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7677052232323285463}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc0affea96b40f6449ebfbdb2ce29f88, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentStage: 2
+--- !u!114 &5541084585581311596
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7677052232323285463}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 248c40188910ab14c98db107266d69a8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rocketPrefab:
+  - {fileID: 5812476243364511196, guid: 664f61fac64041f4480bd6106ad2b9b2, type: 3}
+  - {fileID: 5812476243364511196, guid: ccad1920b14fbe94393265ba94c09b6f, type: 3}
+  - {fileID: 5812476243364511196, guid: 8fb218e31eec1204a9987bffe8a2b09f, type: 3}
+  currentRocketType: 0
   launch: 0
-  launchCD: 0
+  launchCD: -0.00019784714
+--- !u!114 &2021610110
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7677052232323285463}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc0affea96b40f6449ebfbdb2ce29f88, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentStage: 1
 --- !u!1 &7677052232548618733
 GameObject:
   m_ObjectHideFlags: 0
@@ -138,7 +185,7 @@ GameObject:
   - component: {fileID: 7677052232548618720}
   - component: {fileID: 7677052232548618735}
   m_Layer: 0
-  m_Name: Cube
+  m_Name: Body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -233,7 +280,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7677052233170567321}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: -0.4214677, y: 0, z: 0, w: 0.9068434}
   m_LocalPosition: {x: 0, y: 0.6, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -305,4 +352,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerTransform: {fileID: 7677052232323285416}
   mouseSensitivity: 1000
-  xRotation: 0
+  xRotation: -49.85457

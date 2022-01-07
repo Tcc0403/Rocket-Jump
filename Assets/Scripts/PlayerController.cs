@@ -2,32 +2,27 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-enum rocketType{
-    Basic = 0,
-    Speed,
-    Power
-}
+
 
 [RequireComponent(typeof(Rigidbody))]
 [RequireComponent(typeof(Collider))]
 public class PlayerController : MonoBehaviour
 {
-    public Transform[] rocketPrefab;
+    
     public float xRotation;
     private Vector3 PlayerMovementInput;
     private Vector2 PlayerMouseInput;
     private Vector3 collisionNormal;
     private Rigidbody playerRigidbody;
-    
-    [SerializeField] private bool falling;
+        
     [SerializeField] private float jumpForce;
     [SerializeField] private bool run;
     [SerializeField] private float runSpeed;
-    [SerializeField] private bool launch;
-    [SerializeField] private float launchCD;
-    [SerializeField] private rocketType currentRocketType = rocketType.Basic;
+    
+    
     [SerializeField] private float slopeLimit = 60f;
     [SerializeField] private bool isOnSlope = false;
+    [SerializeField] private bool isGrounded = true;
 
     
     
@@ -38,32 +33,23 @@ public class PlayerController : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
 
         playerRigidbody = GetComponent<Rigidbody>();
-
-        falling = false;
+    
         jumpForce = 200.0f;
         run = false;
         runSpeed = 7.5f;
-        launch = false;
-        launchCD = 0.0f;
+        
     }
 
     private void Update()
     {
         //Debug.Log("gravity:" + Physics.gravity);
         run = false;
-        if (launchCD > 0.0f)
-        {
-            launchCD -= Time.deltaTime;
-        }
-        else
-        {
-            launch = false;
-        }
+        
         
         PlayerMovementInput = new Vector3(Input.GetAxis("Horizontal"), 0f, Input.GetAxis("Vertical"));        
         Vector3 MoveVector = transform.TransformDirection(PlayerMovementInput) * runSpeed;
         //Debug.Log("MoveVector Before: "+ MoveVector);
-        if(isOnSlope)
+        if(isGrounded && isOnSlope)
         {
             //Debug.Log("Is on slope");
             MoveVector += collisionNormal*MoveVector.magnitude;
@@ -78,20 +64,14 @@ public class PlayerController : MonoBehaviour
         
         
 
-        if (!falling && Input.GetKey(KeyCode.Space))
+        if ( Input.GetKey(KeyCode.Space) && isGrounded)
         {
-            falling = true;
+            isGrounded = false;
             playerRigidbody.AddForce(Vector3.up * jumpForce);
         }// press "Space" key to jump
         //*** jump ***//
 
-        if (!launch && Input.GetMouseButton(0))
-        {
-            launch = true;
-            launchCD = 1.0f;
-            launchRocket();
-        }
-        //*** launch rocket ***//
+       
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -110,11 +90,11 @@ public class PlayerController : MonoBehaviour
                 if(!(Vector3.Angle(Vector3.up, collisionNormal) <= slopeLimit)) //collision's slope is too steep
                 {
                     
-                    falling = true;
+                    isGrounded = false;
                 }
                 else
                 {
-                    falling = false;
+                    isGrounded = true;
                     break;
                 }                    
             }
@@ -150,27 +130,23 @@ public class PlayerController : MonoBehaviour
                 if(collisionNormal != Vector3.up) isOnSlope = true; //slope detection         
                 else isOnSlope = false;
 
-                if((Vector3.Angle(Vector3.up, collisionNormal) > slopeLimit)) //collision's slope is too steep
-                {                
-                    falling = true;
+                if(!(Vector3.Angle(Vector3.up, collisionNormal) <= slopeLimit)) //collision's slope is too steep
+                {
+                    
+                    isGrounded = false;
                 }
                 else
                 {
-                    falling = false;
+                    isGrounded = true;
                     break;
-                }                    
+                }                     
             }
         }
     }
     private void OnCollisionExit(Collision other) {
         
-       falling = true;
+       isGrounded = false;
     }
-    private void launchRocket()
-    {
-        Transform rocketTransform = Instantiate(rocketPrefab[(int)currentRocketType]);
-        RocketMovement rocketMovement = rocketTransform.GetComponent<RocketMovement>();
-        rocketMovement.playerTransform = this.transform;
-    }
+    
     
 }

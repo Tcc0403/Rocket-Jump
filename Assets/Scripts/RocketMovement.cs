@@ -8,17 +8,18 @@ public class RocketMovement : MonoBehaviour
 {
     public Transform playerTransform;
 
-    private const float moveSpeed = 15.0f;
-    private const float explosionRange = 4.0f;
+    [SerializeField]private float moveSpeed = 15.0f;
+    [SerializeField]private float explosionRange = 4.0f;
+    [SerializeField]private float explosionForce=150;
     private void Start()
     {
-        transform.forward = playerTransform.forward;
+        transform.up = playerTransform.forward;
         // decide left or right
         PlayerController playerController = playerTransform.GetComponent<PlayerController>();
         transform.Rotate(new Vector3(playerController.xRotation, 0.0f, 0.0f));
         // decide up or down
 
-        transform.position = playerTransform.position + transform.forward * 0.5f;
+        transform.position = playerTransform.position + transform.up * 0.5f;
         // start from player's position
 
         //***
@@ -28,7 +29,7 @@ public class RocketMovement : MonoBehaviour
 
     private void Update()
     {
-        transform.position += moveSpeed * transform.forward * Time.deltaTime;
+        transform.position += moveSpeed * transform.up * Time.deltaTime;
         // move forward
 
         if (outOfMap())
@@ -55,7 +56,7 @@ public class RocketMovement : MonoBehaviour
     private void BlowUpPlayer()
     {
         Rigidbody playerRigidbody = playerTransform.GetComponent<Rigidbody>();
-        playerRigidbody.AddForce((explosionRange - (playerTransform.position - transform.position).magnitude) * 150 * (playerTransform.position - transform.position));
+        playerRigidbody.AddForce((explosionRange - (playerTransform.position - transform.position).magnitude) * explosionForce * (playerTransform.position - transform.position));
     }
 
     private bool outOfMap()

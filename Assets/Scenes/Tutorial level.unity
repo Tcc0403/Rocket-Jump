@@ -825,24 +825,6 @@ Mesh:
     offset: 0
     size: 0
     path: 
---- !u!1 &220929257 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7677052232323285463, guid: 1468a94aa23195e44bd384ac91fe4412, type: 3}
-  m_PrefabInstance: {fileID: 1317950348}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &220929262
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 220929257}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bc0affea96b40f6449ebfbdb2ce29f88, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  currentStage: 0
 --- !u!1 &262758284
 GameObject:
   m_ObjectHideFlags: 0
@@ -8601,33 +8583,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7677052232323285417, guid: 1468a94aa23195e44bd384ac91fe4412, type: 3}
-      propertyPath: rocketPrefab.Array.data[0]
-      value: 
-      objectReference: {fileID: 5812476243364511196, guid: 664f61fac64041f4480bd6106ad2b9b2, type: 3}
-    - target: {fileID: 7677052232323285417, guid: 1468a94aa23195e44bd384ac91fe4412, type: 3}
-      propertyPath: rocketPrefab.Array.data[1]
-      value: 
-      objectReference: {fileID: 5812476243364511196, guid: 8fb218e31eec1204a9987bffe8a2b09f, type: 3}
-    - target: {fileID: 7677052232323285417, guid: 1468a94aa23195e44bd384ac91fe4412, type: 3}
-      propertyPath: rocketPrefab.Array.data[2]
-      value: 
-      objectReference: {fileID: 5812476243364511196, guid: ccad1920b14fbe94393265ba94c09b6f, type: 3}
-    - target: {fileID: 7677052232323285419, guid: 1468a94aa23195e44bd384ac91fe4412, type: 3}
-      propertyPath: m_Material
-      value: 
-      objectReference: {fileID: 13400000, guid: 9a80a058d8e449d46ae1f6c1b0e67562, type: 2}
     - target: {fileID: 7677052232323285463, guid: 1468a94aa23195e44bd384ac91fe4412, type: 3}
       propertyPath: m_Name
       value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 7677052232323285463, guid: 1468a94aa23195e44bd384ac91fe4412, type: 3}
-      propertyPath: m_TagString
-      value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 7677052232548618733, guid: 1468a94aa23195e44bd384ac91fe4412, type: 3}
-      propertyPath: m_Name
-      value: Body
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1468a94aa23195e44bd384ac91fe4412, type: 3}
