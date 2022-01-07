@@ -126,7 +126,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4d78efdcbc828343817062365d3cea1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerTransform: {fileID: 0}
+  cameraTransform: {fileID: 0}
   moveSpeed: 10
   explosionRange: 5
   explosionForce: 250

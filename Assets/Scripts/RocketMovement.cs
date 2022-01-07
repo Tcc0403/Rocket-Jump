@@ -6,6 +6,7 @@ using UnityEngine;
 [RequireComponent(typeof(Collider))]
 public class RocketMovement : MonoBehaviour
 {
+    public Transform cameraTransform;
     public Transform playerTransform;
 
     [SerializeField]private float moveSpeed = 15.0f;
@@ -13,13 +14,12 @@ public class RocketMovement : MonoBehaviour
     [SerializeField]private float explosionForce=150;
     private void Start()
     {
-        transform.up = playerTransform.forward;
-        // decide left or right
-        PlayerController playerController = playerTransform.GetComponent<PlayerController>();
-        transform.Rotate(new Vector3(playerController.xRotation, 0.0f, 0.0f));
-        // decide up or down
-
-        transform.position = playerTransform.position + transform.up * 0.5f;
+        transform.forward = cameraTransform.forward;
+        // get camera rotation
+        transform.rotation = cameraTransform.rotation;
+        
+        transform.up = transform.forward;
+        transform.position = cameraTransform.position + transform.up * 0.5f;
         // start from player's position
 
         //***

@@ -14,11 +14,13 @@ public class RocketController : MonoBehaviour
     [SerializeField] private rocketType currentRocketType = rocketType.Basic;
     [SerializeField] private bool launch;
     [SerializeField] private float launchCD;
+    private Transform cameraTranform;
     // Start is called before the first frame update
     void Start()
     {
         launch = false;
         launchCD = 0.0f;
+        cameraTranform = GameObject.FindGameObjectWithTag("MainCamera").transform;
     }
 
     // Update is called once per frame
@@ -70,6 +72,7 @@ public class RocketController : MonoBehaviour
     {
         Transform rocketTransform = Instantiate(rocketPrefab[(int)currentRocketType]);
         RocketMovement rocketMovement = rocketTransform.GetComponent<RocketMovement>();
-        rocketMovement.playerTransform = this.transform;
+        rocketMovement.cameraTransform = cameraTranform;
+        rocketMovement.playerTransform = transform;
     }
 }
